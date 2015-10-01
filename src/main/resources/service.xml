@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+       						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+                            http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.2.xsd 
+                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+			
+	<import resource="jdbc-dao.xml"/>
+	<import resource="datasource.xml"/>
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.npu.libraryapp.services"/>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+	<bean id="bookService" class="com.npu.libraryapp.services.BookServiceImpl" autowire="byType" />
+	
+	<bean id="memberService" class="com.npu.libraryapp.services.MemberServiceImpl" autowire="byType" />
+	
+	<bean id="bookDaoJdbc" class="com.npu.libraryapp.dao.jdbc.BookDaoJdbcImpl" autowire="byType" />
+
+	
+</beans>
